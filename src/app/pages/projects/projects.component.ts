@@ -15,6 +15,9 @@ export class ProjectsComponent {
   loading = signal<boolean>(true);
   error = signal<string | null>(null);
 
+  // Computed signal to sort projects: with description first, without description last
+  sortedProjects = signal<Repository[]>([]);
+
   constructor() {
     this.loadProjects();
   }
@@ -27,6 +30,7 @@ export class ProjectsComponent {
           this.error.set('Unable to load projects. Please try again later (API Rate Limit likely exceeded).');
         } else {
           this.projects.set(repos);
+          this.sortProjects();
           this.fetchLanguages(repos);
         }
         this.loading.set(false);
@@ -37,6 +41,17 @@ export class ProjectsComponent {
         this.loading.set(false);
       }
     });
+  }
+
+  private sortProjects() {
+    const sorted = [...this.projects()].sort((a, b) => {
+      // Projects with descriptions come first
+      if (a.description && !b.description) return -1;
+      if (!a.description && b.description) return 1;
+      // If both have or both don't have descriptions, maintain original order
+      return 0;
+    });
+    this.sortedProjects.set(sorted);
   }
 
   private fetchLanguages(repos: Repository[]) {
@@ -51,6 +66,8 @@ export class ProjectsComponent {
           }
           return currentRepos;
         });
+        // Re-sort after updating
+        this.sortProjects();
       });
     });
   }

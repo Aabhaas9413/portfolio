@@ -11,7 +11,7 @@
       </div>
     } @else {
       <div class="projects-grid">
-        @for (project of projects(); track project.id) {
+        @for (project of sortedProjects(); track project.id) {
           <article class="project-card">
             <div class="project-content">
               <h3>{{ project.name }}</h3>
