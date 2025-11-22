@@ -1,29 +1,119 @@
-<section class="section fade-in">
+<section class="about-page">
   <div class="container">
-    <h2 class="section-title">About Me</h2>
-    
-    <div class="about-content">
-      <div class="about-text">
-        <p>
-          Hello! I'm a passionate developer with a strong interest in building web applications that solve real-world problems. 
-          I enjoy working with modern technologies like Angular, React, and Node.js.
-        </p>
-        <p>
-          My journey in web development started when I decided to build my own website. Since then, I've been learning and building constantly.
-          I love the feeling of creating something from nothing and seeing people use it.
-        </p>
-      </div>
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <h1 class="page-title">About Me</h1>
+      <p class="intro-text">{{ intro() }}</p>
+    </div>
 
-      <div class="skills-section">
-        <h3>Skills</h3>
-        <div class="skills-grid">
-          @for (skill of portfolioService.skills(); track skill.name) {
-            <div class="skill-card">
-              <i [class]="skill.icon"></i>
-              <span>{{ skill.name }}</span>
+    <!-- Highlights Grid -->
+    <div class="highlights-section">
+      <h2 class="section-title">By The Numbers 📊</h2>
+      <div class="highlights-grid">
+        @for (highlight of highlights(); track highlight.metric) {
+          <div class="highlight-card">
+            <span class="highlight-icon">{{ highlight.icon }}</span>
+            <h3 class="highlight-metric">{{ highlight.metric }}</h3>
+            <p class="highlight-description">{{ highlight.description }}</p>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Journey Timeline -->
+    <div class="journey-section">
+      <h2 class="section-title">My Journey 🗺️</h2>
+      <div class="timeline">
+        @for (item of journey(); track item.year) {
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <span class="timeline-icon">{{ item.icon }}</span>
             </div>
-          }
+            <div class="timeline-content">
+              <span class="timeline-year">{{ item.year }}</span>
+              <h3 class="timeline-title">{{ item.title }}</h3>
+              <p class="timeline-description">{{ item.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="tech-section">
+      <h2 class="section-title">Current Tech Stack 🛠️</h2>
+      <div class="tech-categories">
+        <div class="tech-category">
+          <h3>Languages</h3>
+          <div class="tech-tags">
+            @for (tech of currentTech().languages; track tech) {
+              <span class="tech-tag">{{ tech }}</span>
+            }
+          </div>
         </div>
+        
+        <div class="tech-category">
+          <h3>Frontend</h3>
+          <div class="tech-tags">
+            @for (tech of currentTech().frontend; track tech) {
+              <span class="tech-tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+        
+        <div class="tech-category">
+          <h3>Backend & Cloud</h3>
+          <div class="tech-tags">
+            @for (tech of currentTech().backend; track tech) {
+              <span class="tech-tag">{{ tech }}</span>
+            }
+            @for (tech of currentTech().cloud; track tech) {
+              <span class="tech-tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+        
+        <div class="tech-category">
+          <h3>Data & Tools</h3>
+          <div class="tech-tags">
+            @for (tech of currentTech().databases; track tech) {
+              <span class="tech-tag">{{ tech }}</span>
+            }
+            @for (tech of currentTech().tools; track tech) {
+              <span class="tech-tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fun Facts -->
+    <div class="fun-facts-section">
+      <h2 class="section-title">Fun Facts & Achievements 🎉</h2>
+      <div class="fun-facts-grid">
+        @for (fact of funFacts(); track $index) {
+          <div class="fun-fact-card">
+            <p>{{ fact }}</p>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Philosophy -->
+    <div class="philosophy-section">
+      <h2 class="section-title">My Philosophy 💭</h2>
+      <blockquote class="philosophy-quote">
+        {{ philosophy() }}
+      </blockquote>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+      <h2>Let's Build Something Amazing! 🚀</h2>
+      <p>Interested in collaborating or just want to chat about tech?</p>
+      <div class="cta-buttons">
+        <a routerLink="/contact" class="cta-btn primary">Get In Touch</a>
+        <a routerLink="/resume" class="cta-btn secondary">View Resume</a>
       </div>
     </div>
   </div>
