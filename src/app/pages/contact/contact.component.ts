@@ -8,8 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
-  onSubmit(event: Event) {
-    event.preventDefault();
-    alert('Thanks for your message! This is a demo form.');
-  }
+  // Form submission is now handled by FormSubmit.co
 }

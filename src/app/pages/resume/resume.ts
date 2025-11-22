@@ -185,14 +185,19 @@ export class Resume {
     ]
   });
 
-  // Collapse states for sections
-  profileCollapsed = signal(false);
-  skillsCollapsed = signal(false);
-  experienceCollapsed = signal(false);
-  educationCollapsed = signal(false);
-  voluntaryCollapsed = signal(false);
+  // Collapse states for sections - all collapsed by default
+  headerCollapsed = signal(false);
+  profileCollapsed = signal(true);
+  skillsCollapsed = signal(true);
+  experienceCollapsed = signal(true);
+  educationCollapsed = signal(true);
+  voluntaryCollapsed = signal(true);
 
   // Toggle methods
+  toggleHeader() {
+    this.headerCollapsed.update(v => !v);
+  }
+
   toggleProfile() {
     this.profileCollapsed.update(v => !v);
   }
