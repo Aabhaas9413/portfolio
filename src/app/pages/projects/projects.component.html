@@ -1,0 +1,35 @@
+<section class="section fade-in">
+  <div class="container">
+    <h2 class="section-title">My Projects</h2>
+    
+    @if (loading()) {
+      <div class="loading-spinner">Loading projects...</div>
+    } @else if (error()) {
+      <div class="error-message">
+        <p>{{ error() }}</p>
+        <p><small>Note: GitHub API has a rate limit of 60 requests per hour for unauthenticated users.</small></p>
+      </div>
+    } @else {
+      <div class="projects-grid">
+        @for (project of projects(); track project.id) {
+          <article class="project-card">
+            <div class="project-content">
+              <h3>{{ project.name }}</h3>
+              @if (project.description) {
+                <p>{{ project.description }}</p>
+              }
+              <div class="technologies">
+                @for (lang of project.languages; track lang) {
+                  <span class="tech-tag">{{ lang }}</span>
+                }
+              </div>
+              <div class="project-links">
+                <a [href]="project.html_url" target="_blank" class="btn btn-sm btn-outline">GitHub</a>
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    }
+  </div>
+</section>

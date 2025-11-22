@@ -1,0 +1,30 @@
+<section class="section fade-in">
+  <div class="container">
+    <h2 class="section-title">About Me</h2>
+    
+    <div class="about-content">
+      <div class="about-text">
+        <p>
+          Hello! I'm a passionate developer with a strong interest in building web applications that solve real-world problems. 
+          I enjoy working with modern technologies like Angular, React, and Node.js.
+        </p>
+        <p>
+          My journey in web development started when I decided to build my own website. Since then, I've been learning and building constantly.
+          I love the feeling of creating something from nothing and seeing people use it.
+        </p>
+      </div>
+
+      <div class="skills-section">
+        <h3>Skills</h3>
+        <div class="skills-grid">
+          @for (skill of portfolioService.skills(); track skill.name) {
+            <div class="skill-card">
+              <i [class]="skill.icon"></i>
+              <span>{{ skill.name }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
