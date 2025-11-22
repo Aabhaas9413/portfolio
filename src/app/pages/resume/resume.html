@@ -1,0 +1,128 @@
+<div class="resume-container">
+  <div class="resume-header">
+    <h1>{{ name() }}</h1>
+    <p class="subtitle">{{ title() }}</p>
+    
+    <div class="contact-info">
+      <a href="tel:{{ phone() }}" class="contact-link">{{ phone() }}</a>
+      <span class="separator">•</span>
+      <a href="mailto:{{ email() }}" class="contact-link">{{ email() }}</a>
+    </div>
+    
+    <div class="links">
+      <a [href]="linkedin()" target="_blank" rel="noopener noreferrer" class="social-link">
+        LinkedIn
+      </a>
+      <span class="separator">•</span>
+      <a [href]="github()" target="_blank" rel="noopener noreferrer" class="social-link">
+        GitHub
+      </a>
+    </div>
+    
+    <div class="download-section">
+      <a href="Aabhaas_Malhotra_Resume.pdf" download="Aabhaas_Malhotra_Resume.pdf" class="download-resume-btn">
+        📥 Download PDF Resume
+      </a>
+    </div>
+  </div>
+
+  <section class="resume-section collapsible">
+    <div class="section-header" (click)="toggleProfile()">
+      <h2>Profile</h2>
+      <span class="toggle-icon" [class.collapsed]="profileCollapsed()">
+        {{ profileCollapsed() ? '▶' : '▼' }}
+      </span>
+    </div>
+    <div class="section-content" [class.collapsed]="profileCollapsed()">
+      <p class="profile-text">{{ profile() }}</p>
+    </div>
+  </section>
+
+  <section class="resume-section collapsible">
+    <div class="section-header" (click)="toggleSkills()">
+      <h2>Technical Skills</h2>
+      <span class="toggle-icon" [class.collapsed]="skillsCollapsed()">
+        {{ skillsCollapsed() ? '▶' : '▼' }}
+      </span>
+    </div>
+    <div class="section-content" [class.collapsed]="skillsCollapsed()">
+      <ul class="skills-list">
+        @for (skill of technicalSkills(); track skill) {
+          <li>{{ skill }}</li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="resume-section collapsible">
+    <div class="section-header" (click)="toggleExperience()">
+      <h2>Professional Experience</h2>
+      <span class="toggle-icon" [class.collapsed]="experienceCollapsed()">
+        {{ experienceCollapsed() ? '▶' : '▼' }}
+      </span>
+    </div>
+    <div class="section-content" [class.collapsed]="experienceCollapsed()">
+      @for (exp of experiences(); track exp.company + exp.period) {
+        <div class="experience-item">
+          <div class="item-header">
+            <div>
+              <h3>{{ exp.title }}</h3>
+              <p class="company">{{ exp.company }} — {{ exp.location }}</p>
+            </div>
+            <span class="date">{{ exp.period }}</span>
+          </div>
+          <ul class="responsibilities">
+            @for (resp of exp.responsibilities; track $index) {
+              <li>{{ resp }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="resume-section collapsible">
+    <div class="section-header" (click)="toggleEducation()">
+      <h2>Education</h2>
+      <span class="toggle-icon" [class.collapsed]="educationCollapsed()">
+        {{ educationCollapsed() ? '▶' : '▼' }}
+      </span>
+    </div>
+    <div class="section-content" [class.collapsed]="educationCollapsed()">
+      @for (edu of education(); track edu.institution + edu.period) {
+        <div class="education-item">
+          <div class="item-header">
+            <div>
+              <h3>{{ edu.degree }}</h3>
+              <p class="institution">{{ edu.institution }} — {{ edu.location }}</p>
+              @if (edu.grade) {
+                <p class="grade">{{ edu.grade }}</p>
+              }
+            </div>
+            <span class="date">{{ edu.period }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="resume-section collapsible">
+    <div class="section-header" (click)="toggleVoluntary()">
+      <h2>Voluntary Work</h2>
+      <span class="toggle-icon" [class.collapsed]="voluntaryCollapsed()">
+        {{ voluntaryCollapsed() ? '▶' : '▼' }}
+      </span>
+    </div>
+    <div class="section-content" [class.collapsed]="voluntaryCollapsed()">
+      <div class="voluntary-item">
+        <h3>{{ voluntaryWork().title }}</h3>
+        <p class="organization">{{ voluntaryWork().organization }}</p>
+        <ul class="responsibilities">
+          @for (resp of voluntaryWork().responsibilities; track $index) {
+            <li>{{ resp }}</li>
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>

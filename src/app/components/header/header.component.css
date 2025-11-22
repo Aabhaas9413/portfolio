@@ -56,6 +56,21 @@
   gap: 1rem;
 }
 
+.download-btn {
+  font-size: 1.25rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color var(--transition-speed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.download-btn:hover {
+  background-color: var(--border-color);
+}
+
+
 .theme-toggle {
   background: none;
   border: none;

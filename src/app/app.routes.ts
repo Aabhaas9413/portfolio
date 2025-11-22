@@ -3,6 +3,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { Resume } from './pages/resume/resume';
 
 
 export const routes: Routes = [
@@ -10,5 +11,6 @@ export const routes: Routes = [
   { path: 'about', component: AboutComponent, title: 'About | Portfolio' },
   { path: 'projects', component: ProjectsComponent, title: 'Projects | Portfolio' },
   { path: 'contact', component: ContactComponent, title: 'Contact | Portfolio' },
+  { path: 'resume', component: Resume, title: 'Resume | Portfolio' },
   { path: '**', redirectTo: '' }
 ];
