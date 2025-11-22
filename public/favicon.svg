@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0e7ff;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded rectangle background -->
+  <rect width="100" height="100" rx="20" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative code brackets -->
+  <path d="M 15 30 L 10 35 L 15 40" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.3"/>
+  <path d="M 85 30 L 90 35 L 85 40" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.3"/>
+  
+  <!-- Letters "AM" for Aabhaas Malhotra -->
+  <text x="50" y="70" font-family="Arial, sans-serif" font-size="45" font-weight="bold" text-anchor="middle" fill="url(#textGradient)">AM</text>
+  
+  <!-- Small accent dot -->
+  <circle cx="80" cy="22" r="4" fill="#ffffff" opacity="0.8"/>
+</svg>
